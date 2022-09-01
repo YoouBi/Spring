@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- xml로 관리 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean class="mybeans.MyBean" id="first"></bean>
+	
+	<bean class="mybeans.MyLogic" id="second">
+		<constructor-arg ref="first"></constructor-arg>
+	</bean>
+	
+	<bean class="mybeans.MyStatefulObj" id="third" scope="prototype">
+		<!-- 생성자 파라미터 순서대로 넣어줘야함 -->
+		<constructor-arg value="my-name"></constructor-arg>
+		<constructor-arg value="100"></constructor-arg>
+	</bean>
+	
+	<bean class="mybeans.MyStatefulObj" id="fourth" scope="prototype" primary="true">
+	<!-- 똑같은 타입의 빈이 있더라도 primary="true"로 주요 bean을 설정하면 아이디가 없더라도 해당 bean을 먼저 꺼낸다 -->
+		<property name="name" value="bysetter"></property>
+		<property name="number" value="400"></property>
+	</bean>
+</beans>
