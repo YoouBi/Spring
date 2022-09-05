@@ -6,6 +6,7 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 public class User {
+	private int id;
 	@NotBlank(message = "이름을 입력해주세요.") // 값이 없거나 공백으로만 되어있으면 에러 유효성 메세지를 심어줌
 	@Size(min = 1, max = 4, message = "이름은 1~4자 사이여야합니다.")
 	private String name;
@@ -23,6 +24,20 @@ public class User {
 		this.age = age;
 	}
 	
+	public User(int id, String name, int age) {
+		this.id = id;
+		this.name = name;
+		this.age = age;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -41,6 +56,6 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [name=" + name + ", age=" + age + "]";
+		return "User [id=" + id + ", name=" + name + ", age=" + age + "]";
 	}
 }
