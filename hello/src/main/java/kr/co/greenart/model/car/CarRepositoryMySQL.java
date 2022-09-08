@@ -42,7 +42,7 @@ public class CarRepositoryMySQL implements CarRepository {
 		
 		@Override
 		public int add(Car car) {
-			return jdbcTemplate.update("INSERT INTO cars(model, price) VALUES (?, ?)"
+			return jdbcTemplate.update("INSERT INTO cars (model, price) VALUES (?, ?)"
 					, car.getModel()
 					, car.getPrice());
 		}
@@ -57,7 +57,7 @@ public class CarRepositoryMySQL implements CarRepository {
 		
 		@Override
 		public int delete(int id) {
-			return jdbcTemplate.update("DELECT FROM cars WHERE id=?", id);
+			return jdbcTemplate.update("DELETE FROM cars WHERE id=?", id);
 		}
 		
 		@Override
